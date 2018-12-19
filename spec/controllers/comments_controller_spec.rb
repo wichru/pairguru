@@ -4,9 +4,9 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "not signed user" do
     let(:user) { FactoryBot.create(:user) }
+    let(:movie) { FactoryBot.create(:movie) }
 
     describe "POST #create" do
-      let(:movie) { FactoryBot.create(:movie) }
 
       it "doesn't allow to create comment and shows alert" do
         expect do
@@ -54,9 +54,10 @@ RSpec.describe CommentsController, type: :controller do
       end
 
       describe "DELETE #destroy" do
-        it "deletes comment" do
-          comment = FactoryBot.create(:comment, movie: movie, user: user)
+        let(:comment) { FactoryBot.create(:comment, movie: movie, user: user) }
+        before { comment }
 
+        it "deletes comment" do
           expect do
             delete :destroy, params: { id: comment.id, movie_id: movie.id }
           end.to change(Comment, :count).by(-1)
@@ -68,7 +69,6 @@ RSpec.describe CommentsController, type: :controller do
 
           it "doesn't delete comment" do
             sign_in(other_user)
-            comment = FactoryBot.create(:comment, movie: movie, user: user)
 
             expect do
               delete :destroy, params: { id: comment.id, movie_id: movie.id }
