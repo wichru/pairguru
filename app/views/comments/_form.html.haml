@@ -1,0 +1,6 @@
+= form_for [@movie, @comment] do |f|
+  - if current_user
+    %p
+      = f.text_area :body, class: "form-control"
+    %p
+      = f.submit class: "btn btn-sm btn-danger"

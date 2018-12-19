@@ -34,6 +34,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop"
   gem "simplecov"
+  gem "rails-controller-testing"
+  gem 'guard-rspec', require: false
 end
 
 group :test do
