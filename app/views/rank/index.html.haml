@@ -1,0 +1,15 @@
+.row
+  .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
+    %h1.text-center Most Active Users
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Rank
+          %th User email
+          %th Comments count
+      %tbody
+        - @result.each_with_index do |result, i|
+          %tr
+            %td= i + 1
+            %td= result.email
+            %td= result.comments_count
