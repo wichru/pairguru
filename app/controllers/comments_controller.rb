@@ -3,7 +3,11 @@ class CommentsController < ApplicationController
 
   def create
 <<<<<<< HEAD
+<<<<<<< HEAD
     @comment = @movie.comments.new(comment_params.merge(user: current_user))
+=======
+    @comment = @movie.comments.create(comment_params)
+>>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
 =======
     @comment = @movie.comments.create(comment_params)
 >>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
@@ -32,7 +36,11 @@ class CommentsController < ApplicationController
 
   def comment_params
 <<<<<<< HEAD
+<<<<<<< HEAD
     params.require(:comment).permit(:body)
+=======
+    params.require(:comment).permit(:commenter, :body)
+>>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
 =======
     params.require(:comment).permit(:commenter, :body)
 >>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
