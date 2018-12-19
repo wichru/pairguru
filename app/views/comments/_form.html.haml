@@ -1,0 +1,10 @@
+= form_for [@movie, @comment] do |f|
+
+  %p
+    - if current_user.name.present?
+      = f.label current_user.name
+  %p
+    = f.label :body
+    = f.text_area :body
+  %p
+    = f.submit

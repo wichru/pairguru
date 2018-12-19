@@ -1,30 +1,35 @@
 class CommentsController < ApplicationController
-  before_action :provide_movie, only: %i[create destroy]
+  before_action :set_movie, only: %i[create destroy]
+
   def create
-    @comment = Comment.new(comment_params)
+    @comment = @movie.comments.create(comment_params)
 
     if @comment.save
+      flash[:notice] = 'Comment successfully added'
       redirect_to @movie
     else
       render 'movies/show'
     end
+  end
 
-    def destroy
-      @comment = @movie.comments.find(params[:id])
+  def destroy
+    @comment = @movie.comments.find(params[:id])
 
-      @comment.destroy!
-
-      redirect_to @movie
+    if @comment.destroy
+      flash[:notice] = 'Comment successfully deleted'
+    else
+      flash[:alert] = 'You are not the author of this comment'
     end
+    redirect_to @movie
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:commenter, :body).merge(movie: @movie)
+    params.require(:comment).permit(:commenter, :body)
   end
 
-  def provide_movie
+  def set_movie
     @movie = Movie.find(params[:movie_id])
   end
 end

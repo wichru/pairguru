@@ -4,12 +4,5 @@
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
   %h3 Add comment
-  = form_for [@movie, @comment] do |f|
-    = f.hidden_field :movie_id
-    %p
-      = f.label current_user.name
-    %p
-      = f.label :body
-      = f.text_area :body
-    %p
-      = f.submit
+  = render 'comments/form'
+= render 'comments/comment'

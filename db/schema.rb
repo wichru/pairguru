@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_160716) do
+ActiveRecord::Schema.define(version: 2018_12_18_170608) do
 
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
@@ -18,13 +18,15 @@ ActiveRecord::Schema.define(version: 2018_12_17_160716) do
     t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["movie_id"], name: "index_comments_on_movie_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
@@ -33,8 +35,8 @@ ActiveRecord::Schema.define(version: 2018_12_17_160716) do
     t.datetime "released_at"
     t.string "avatar"
     t.integer "genre_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_movies_on_genre_id"
   end
 
@@ -49,8 +51,8 @@ ActiveRecord::Schema.define(version: 2018_12_17_160716) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "phone_number"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
