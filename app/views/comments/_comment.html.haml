@@ -1,10 +1,10 @@
-%table.table.table-striped
-  %tbody
-    - @movie.comments.persisted.each do |comment|
-      %tr
-        %td
-          %strong
-            %p= comment.body
-        %td
-          - if current_user.id == comment.user_id
-            %p= link_to 'Delete', movie_comment_path(@movie, comment), method: :delete, data: { confirm: 'Are you sure?' }
+- @movie.comments.persisted.each do |comment|
+  %tr
+    %td
+      %strong
+        %p= comment.user.email
+    %td
+      %p= comment.body
+    %td
+      - if current_user && current_user.id == comment.user_id
+        %p= link_to 'Delete', movie_comment_path(@movie, comment), method: :delete, data: { confirm: 'Are you sure?' }

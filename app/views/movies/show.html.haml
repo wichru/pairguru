@@ -5,5 +5,11 @@
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
   %h3 Add comment
   = render 'comments/form'
-
-= render 'comments/comment'
+%h2 Comments
+%table.table.table-hover
+  %thead
+    %tr
+      %td User
+      %td Comment
+  %tbody
+    = render 'comments/comment'
