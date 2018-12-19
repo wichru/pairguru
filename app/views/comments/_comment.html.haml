@@ -1,26 +1,10 @@
 %table.table.table-striped
   %tbody
-<<<<<<< HEAD
-<<<<<<< HEAD
     - @movie.comments.persisted.each do |comment|
-=======
-    - @movie.comments.each do |comment|
->>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
-=======
-    - @movie.comments.each do |comment|
->>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
       %tr
         %td
           %strong
             %p= comment.body
         %td
-<<<<<<< HEAD
-<<<<<<< HEAD
           - if current_user.id == comment.user_id
-=======
-          - if current_user
->>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
-=======
-          - if current_user
->>>>>>> 8005ca0607cacd99e7edd3ccb2944ec48628d295
             %p= link_to 'Delete', movie_comment_path(@movie, comment), method: :delete, data: { confirm: 'Are you sure?' }
