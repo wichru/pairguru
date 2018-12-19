@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_movie, only: %i[create destroy]
+  before_action :authenticate_user!, only: %i[create destroy]
 
   def create
     @comment = @movie.comments.new(comment_params.merge(user: current_user))
