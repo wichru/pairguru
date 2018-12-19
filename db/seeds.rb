@@ -82,3 +82,11 @@ if Movie.count < 100
     )
   end
 end
+
+10.times do
+  Comment.create!(
+    body: 'This is a comment',
+    user: User.find(rand(1..20)),
+    movie: Movie.find(rand(1..100))
+  )
+end
