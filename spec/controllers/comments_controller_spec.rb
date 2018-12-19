@@ -64,8 +64,8 @@ RSpec.describe CommentsController, type: :controller do
         end
 
         context "when user is not the author" do
-          let(:other_user) { FactoryBot.create(:user)}
-
+          let(:other_user) { FactoryBot.create(:user, id: 234) }
+          
           it "doesn't delete comment" do
             sign_in(other_user)
             comment = FactoryBot.create(:comment, movie: movie, user: user)
